@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@aarc-xyz/auth-sdk':
-    specifier: ^0.0.2
-    version: 0.0.2
+    specifier: ^0.0.8
+    version: 0.0.8
   '@farcaster/auth-kit':
     specifier: ^0.2.2
     version: 0.2.2(@types/react@18.2.74)(react-dom@18.2.0)(react@18.2.0)(viem@2.9.9)
@@ -103,8 +103,8 @@ devDependencies:
 
 packages:
 
-  /@aarc-xyz/auth-sdk@0.0.2:
-    resolution: {integrity: sha512-KOgyzrWD5PL7h9b5QxRfEpu7U/vSfr64u/OX0xbJMAIBMU28XzKDEOnsHEanONX8Q5s84hG0tUdL2NfTPM95og==}
+  /@aarc-xyz/auth-sdk@0.0.8:
+    resolution: {integrity: sha512-Pa4fLx74P0P9VEu7p4PI/94Hlt4pGZoNXFFk5t3cSXcEvxhWb2qcUgwMEixI3/pk5k0MOeYCn49q6bxbMZqksw==}
     dependencies:
       axios: 1.7.2
     transitivePeerDependencies:

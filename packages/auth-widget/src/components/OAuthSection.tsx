@@ -46,7 +46,7 @@ const OAuthSection = ({ config, setStep, setProvider, setLoadingMessage, setSess
         if (provider == "twitter") {
             url = await auth.getTwitterLoginUrl(session_identifier)
         } else {
-            url = auth.generateUrl(provider, session_identifier)
+            url = await auth.generateUrl(provider, session_identifier)
         }
         const w = window.open(url)
         const onSuccess = (res: PollResponse) => {
@@ -55,7 +55,7 @@ const OAuthSection = ({ config, setStep, setProvider, setLoadingMessage, setSess
             setUserData(res)
             timeElapsed.current = 60
             localStorage.setItem(sessionKeys.SESSION_IDENTIFIER, session_identifier)
-            localStorage.setItem(sessionKeys.SESSION_KEY, res.data.key)
+            cookies.set(sessionKeys.SESSION_KEY, res.data.key, { path: '/' });
 
         }
         const onError = () => {
@@ -158,7 +158,7 @@ const OAuthSection = ({ config, setStep, setProvider, setLoadingMessage, setSess
         const session_identifier = Math.random().toString(36).substring(7);
         setStep('loading')
 
-        const url = auth.generateUrl('telegram', session_identifier)
+        const url = await auth.generateUrl('telegram', session_identifier)
 
         const w = window.open(url)
         const onSuccess = (res: PollResponse) => {
@@ -167,6 +167,8 @@ const OAuthSection = ({ config, setStep, setProvider, setLoadingMessage, setSess
             setUserData(res)
             timeElapsed.current = 60
             localStorage.setItem(sessionKeys.SESSION_IDENTIFIER, session_identifier)
+            cookies.set(sessionKeys.SESSION_KEY, res.data.key, { path: '/' });
+
             localStorage.setItem(sessionKeys.SESSION_KEY, res.data.key)
         }
         const onError = () => {
