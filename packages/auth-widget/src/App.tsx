@@ -39,22 +39,41 @@ function App() {
     authMethods: [AuthMethod.WALLET, AuthMethod.SMS, AuthMethod.EMAIL],
     socialAuth: [OAuthProvider.TELEGRAM, OAuthProvider.FARCASTER, OAuthProvider.TWITTER, OAuthProvider.GOOGLE,],
     aarcApiKey: 'aarc_api_key',
-    chainId: 11155111
+    chainId: 11155111,
+    urls: {
+      stytchUrls: {
+        prod: "https://api.stytch.aarc.xyz/",
+        staging: "https://test.stytch.com/",
+      },
+      pollUrls: {
+        prod: "https://open-auth.aarc.xyz/",
+        staging: "https://open-auth.staging.aarc.xyz/",
+      },
+      publicToken: {
+        prod: "stytch-public-prod-token",
+        staging: "stytch-public-stage-token",
+      },
+      redirectUrl: {
+        prod: "https://auth.aarc.network/",
+        staging: "https://auth-staging.aarc.network/"
+      }
+    },
+    env: 'production'
   }
 
   return (
     <div>
       <Provider config={config}>
-        <Auth data={data} />
+        <Auth data={data} config={config} />
       </Provider>
 
     </div>
   )
 }
 
-function Auth({ data }: { data: any }) {
+function Auth({ data, config }: { data: any, config: any }) {
   const { openAuthWidget } = useAuthWidget()
-  const sendTransaction = useWallet()
+  const sendTransaction = useWallet(config)
   const handleSendTransaction = async () => {
 
     sendTransaction(
@@ -64,7 +83,7 @@ function Auth({ data }: { data: any }) {
         value: 2
       },
       80001,
-      "aarc_api_key"
+      config.aarcApiKey
     )
 
   }

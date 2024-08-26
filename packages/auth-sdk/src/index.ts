@@ -13,29 +13,12 @@ class AuthSDK {
     private env: string;
     private config: StytchConfig;
 
-    constructor(aarcApiKey: string, chainId: number, env: string) {
+    constructor(aarcApiKey: string, chainId: number, env: string, config : StytchConfig) {
         if (env !== "prod" && env !== "staging") {
             throw new Error("Invalid environment provided. Please use 'prod' or 'staging'.");
         }
 
-        this.config = {
-            stytchUrls: {
-                prod: "https://api.stytch.aarc.xyz/",
-                staging: "https://test.stytch.com/",
-            },
-            pollUrls: {
-                prod: "https://open-auth.aarc.xyz/",
-                staging: "https://open-auth.staging.aarc.xyz/",
-            },
-            publicToken: {
-                prod: "stytch-public-prod-token",
-                staging: "stytch-public-stage-token",
-            },
-            redirectUrl: {
-                prod: "https://auth.aarc.network/",
-                staging: "https://auth-staging.aarc.network/"
-            }
-        };
+        this.config = config;
 
         this.aarcApiKey = aarcApiKey;
         this.chainId = chainId;

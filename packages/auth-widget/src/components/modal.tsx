@@ -7,7 +7,7 @@ import Loading from "./Loading";
 import SwitchToSMS from "./SwitchToSMS";
 import useAuthWidget from '../hooks/useAuthWidget';
 import AuthSDK from "@aarc-xyz/auth-sdk"
-import { base_url, env } from "../constants";
+
 import { AarcAuthWidgetConfig, AuthMethod, PollResponse, ProviderKey, sessionKeys, step } from "./types";
 import { PublicKeyCredentialRequestOptionsJSON } from "@simplewebauthn/types";
 import { v4 } from "uuid";
@@ -53,7 +53,8 @@ export default function AuthModal({ config }: { config: AarcAuthWidgetConfig }) 
             openAuthWidget()
         }
     })
-
+    const env = config.env
+    const base_url = config.urls.pollUrls[env]
     useEffect(() => {
         setProvider(walletDetails.provider)
     }, [walletDetails.provider])

@@ -9,7 +9,7 @@ import axios from 'axios';
 import { SignInButton, UseCreateChannelData } from "@farcaster/auth-kit";
 import { useState } from 'react';
 import AuthSDK from '@aarc-xyz/auth-sdk';
-import { base_url, env } from '../constants';
+
 import twitterdark from '../assets/twitter-dark.svg'
 import Cookies from 'universal-cookie';
 import { AarcAuthWidgetConfig, OAuthProvider, OauthProviderKey, PollResponse, ProviderKey, Providers, sessionKeys, step } from './types';
@@ -30,10 +30,11 @@ const OAuthSection = ({ config, setStep, setProvider, setLoadingMessage, setSess
 
 
     const timeElapsed = useRef(0)
-
+    const env = config.env
+    const base_url = config.urls.pollUrls[config.env]
     const [farcasterCalled, setFarcasterCalled] = useState(false)
     const cookies = new Cookies();
-    const auth = new AuthSDK(config.aarcApiKey, config.chainId, env)
+    const auth = new AuthSDK(config.aarcApiKey, config.chainId, env, config.urls)
 
     const handleLogin = async (provider: OauthProviderKey) => {
         setProvider(provider)

@@ -1,6 +1,5 @@
 import React from 'react';
 import { AarcAuthWidgetConfig, step } from './types';
-import { base_url } from '../constants';
 import useAuthWidget from '../hooks/useAuthWidget';
 
 interface BrowserWalletProps {
@@ -17,6 +16,7 @@ const BrowserWallets: React.FC<BrowserWalletProps> = ({
 
     const { Wallet } = config
     const { openAuthWidget } = useAuthWidget();
+    const base_url = config.urls.pollUrls[config.env]
 
     return (
         <div className="flex flex-col items-center justify-center w-full">

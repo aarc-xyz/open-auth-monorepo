@@ -32,6 +32,8 @@ export type AarcAuthWidgetConfig = {
     socialAuth: OAuthProvider[];
     aarcApiKey: string;
     chainId: number;
+    urls: any;
+    env: 'production' | 'staging'
 };
 
 export const sessionKeys = {

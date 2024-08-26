@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { base_url } from '../constants';
+
+import { AarcAuthWidgetConfig } from '../components/types';
 
 interface Transaction {
     from?: string;
@@ -7,7 +8,9 @@ interface Transaction {
     value: string | number;
 }
 
-export function useWallet() {
+export function useWallet(config: AarcAuthWidgetConfig) {
+
+    const base_url = config.urls.pollUrls[config.env];
 
     const toHex = (value: string | number): string => {
         return "0x" + (typeof value === 'number' ? value.toString(16) : parseInt(value as string).toString(16));

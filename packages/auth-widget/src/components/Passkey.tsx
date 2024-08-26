@@ -3,7 +3,7 @@ import passkeyDark from '../assets/passkey-dark.png'
 import { Button } from 'antd'
 import { startRegistration } from "@simplewebauthn/browser";
 import useAuthWidget from '../hooks/useAuthWidget';
-import { base_url } from '../constants';
+
 import { AarcAuthWidgetConfig, PollResponse, step } from './types';
 import { pollResponse } from '../../../auth-sdk/src/types';
 
@@ -20,6 +20,7 @@ interface PasskeyComponentProps {
 const PasskeyComponent = ({ config, sessionIdentifier, newWalletAddress, userData, setStep, setLoadingMessage }: PasskeyComponentProps) => {
 
     const { openAuthWidget } = useAuthWidget();
+    const base_url = config.urls.pollUrls[config.env]
 
     const handleRegistration = async () => {
         try {
