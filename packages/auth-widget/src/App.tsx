@@ -58,7 +58,7 @@ function App() {
         staging: "https://auth-staging.aarc.network/"
       }
     },
-    env: 'production'
+    env: 'staging'
   }
 
   return (

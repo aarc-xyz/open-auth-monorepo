@@ -29,8 +29,8 @@ const options = [
 
 
 export default function AuthModal({ config }: { config: AarcAuthWidgetConfig }) {
-
-    const auth = new AuthSDK(config.aarcApiKey, config.chainId, env)
+    const env = config.env
+    const auth = new AuthSDK(config.aarcApiKey, config.chainId, env, config.urls)
     const { authMethods } = config
     const { isAuthWidgetOpen, openAuthWidget } = useAuthWidget();
     const [form] = Form.useForm();
@@ -53,7 +53,6 @@ export default function AuthModal({ config }: { config: AarcAuthWidgetConfig }) 
             openAuthWidget()
         }
     })
-    const env = config.env
     const base_url = config.urls.pollUrls[env]
     useEffect(() => {
         setProvider(walletDetails.provider)
