@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@aarc-xyz/auth-sdk": "^0.0.8",
+    "@aarc-xyz/auth-sdk": "^0.0.3",
     "@farcaster/auth-kit": "^0.2.2",
     "@rollup/plugin-replace": "^5.0.7",
     "@simplewebauthn/browser": "^10.0.0",
