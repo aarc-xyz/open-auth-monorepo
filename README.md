@@ -2,10 +2,7 @@
 
 Welcome to the OpenAuth Monorepo! This repository houses multiple packages designed to streamline user onboarding in Web3 applications and enable the development of smooth omnichain dApps.
 
-[![Discord](https://img.shields.io/discord/YOUR_DISCORD_ID)](https://discord.gg/3kFCfBgSdY)
-[![Telegram](https://img.shields.io/badge/Telegram-Join%20Chat-blue?style=flat&logo=telegram)](https://t.me/aarcxyz)
-
-For quick support: [Join our Discord](https://discord.gg/3kFCfBgSdY) | [Join our Telegram](https://t.me/aarcxyz)
+[![Discord](https://img.shields.io/badge/Discord-Join%20Chat-7289DA?style=flat&logo=discord&logoColor=white)](https://discord.gg/3kFCfBgSdY) [![Telegram](https://img.shields.io/badge/Telegram-Join%20Chat-blue?style=flat&logo=telegram)](https://t.me/aarcxyz)
 
 ## Table of Contents
 
