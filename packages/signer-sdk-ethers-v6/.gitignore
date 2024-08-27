@@ -1,0 +1,14 @@
+# Compiled source
+dist
+
+# Dependencies and Artifacts
+node_modules
+
+# Environment files and secrets
+.env
+
+# Configuration Files
+
+# IDE Files
+.idea
+.vscode
