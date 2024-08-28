@@ -8,10 +8,9 @@ The OpenAuth Widget by Aarc provides a seamless authentication solution for web 
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
   - [Authentication Methods](#authentication-methods)
-  - [Installation](#installation)
   - [Local Development](#local-development)
   - [Usage](#usage)
-    - [Installation](#installation-1)
+    - [Installation](#installation)
     - [Configuring the Widget](#configuring-the-widget)
     - [Integrating the Provider](#integrating-the-provider)
     - [Using the Widget](#using-the-widget)
@@ -34,14 +33,6 @@ The OpenAuth Widget by Aarc provides a seamless authentication solution for web 
 - **Email**: Users can log in using their email address.
 - **Phone**: Users can log in using their phone number.
 - **PassKeys**: Users can log in using their PassKeys.
-
-## Installation
-
-To install the OpenAuth widget, run the following command in your project directory:
-
-```sh
-npm i @aarc-xyz/auth-widget
-```
 
 ## Local Development
 

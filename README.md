@@ -25,6 +25,9 @@ Welcome to the OpenAuth Monorepo! This repository houses multiple packages desig
       - [Configuration](#configuration-1)
       - [Integration](#integration-1)
       - [Usage](#usage-1)
+    - [Signer SDK Ethers V6](#signer-sdk-ethers-v6)
+      - [Installation](#installation-2)
+      - [Usage](#usage-2)
   - [Contributing](#contributing)
 
 ## Overview
@@ -192,6 +195,48 @@ function WalletManager() {
 }
 ```
 
+### Signer SDK Ethers V6
+
+The Signer SDK Ethers V6 provides a signer class that can be initiated with a user's authenticated session data and wallet address. It offers methods to sign messages, transactions, and send transactions from a user's social wallet, implementing the ethers v6 Signer class.
+
+#### Installation
+
+```sh
+npm i @aarc-xyz/ethers-v6-signer
+```
+
+#### Usage
+
+```typescript
+import { AarcEthersSigner, OpenAuthProvider } from "@aarc-xyz/ethers-v6-signer";
+
+const rpc_url = 'your rpc url here';
+const sessionKey = localStorage.getItem('sessionKey');
+
+const signer = new AarcEthersSigner(rpc_url, {
+  apiKeyId: process.env.AARC_API_KEY,
+  wallet_address: '<authenticated address>',
+  sessionKey: sessionKey,
+  chainId: 1
+});
+
+// Signing a message
+const message = "Hello, world!";
+const signature = await signer.signMessage(message);
+
+// Signing a transaction
+const transaction = {
+  to: "0x...",
+  value: ethers.parseEther("0.1"),
+  gasLimit: 21000,
+};
+
+const signedTransaction = await signer.signTransaction(transaction);
+
+// Sending a transaction
+const transactionResponse = await signer.sendTransaction(transaction);
+```
+
 ## Contributing
 
 We welcome contributions! Please read our [Contributing Guide](CONTRIBUTING.md) for details on how you can help improve OpenAuth.
@@ -202,3 +247,4 @@ For more detailed information on each package, please refer to their individual 
 - [Auth Widget README](packages/auth-widget/README.md)
 - [Wallet Auth README](packages/wallet-auth/README.md)
 - [Wallet Manager README](packages/wallet-manager/README.md)
+- [Signer SDK Ethers V6 README](packages/signer-sdk-ethers-v6/README.md)
