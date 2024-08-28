@@ -5,7 +5,6 @@ export type OpenAuthConfig = {
 }
 
 export type BaseProps = {
-    apiKeyId: string;
     wallet_address: string;
     sessionKey: string;
     chainId: number;
