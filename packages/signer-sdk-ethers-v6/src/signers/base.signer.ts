@@ -4,7 +4,6 @@ import {OpenAuthConfig, BaseProps, TransactionDto, TransactionsOperationDto, Sig
 
 export class BaseSigner {
     private readonly logger: Logger;
-    private readonly apiKeyId: string;
     private readonly sessionKey: string;
     private address: string;
     private chainId: number;
@@ -15,7 +14,6 @@ export class BaseSigner {
 
     constructor(props: BaseProps, config: OpenAuthConfig) {
         this.logger = new Logger();
-        this.apiKeyId = props.apiKeyId;
         this.sessionKey = props.sessionKey;
         this.address = props.wallet_address;
         this.chainId = props.chainId;
@@ -55,7 +53,6 @@ export class BaseSigner {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'x-api-key': this.apiKeyId,
                 },
                 body: JSON.stringify(signMessagePayload),
             });
@@ -96,7 +93,6 @@ export class BaseSigner {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'x-api-key': this.apiKeyId,
                 },
                 body: JSON.stringify(signTransactionPayload, (key, value) => {
                     return typeof value === "bigint" ? '0x' + value.toString(16) : value;
