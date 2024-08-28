@@ -1,8 +1,7 @@
 import { BigNumberish } from "ethers";
 
 export type OpenAuthConfig = {
-    signTransactionEndpoint?: string;
-    signMessageEndpoint?: string;
+    baseUrl: string;
 }
 
 export type BaseProps = {

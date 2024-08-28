@@ -27,7 +27,7 @@ export class EthersSigner
     private manualGasPrice?: bigint;
     private manualGasLimit?: bigint;
 
-    constructor(rpcUrl: string | null, props: BaseProps, config?: OpenAuthConfig) {
+    constructor(rpcUrl: string | null, props: BaseProps, config: OpenAuthConfig) {
         super(props, config);
         if (rpcUrl) {
             this.provider = new JsonRpcProvider(rpcUrl);

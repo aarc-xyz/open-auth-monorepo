@@ -1,7 +1,6 @@
 import { Logger } from "../logger";
 import { Transaction, TransactionLike, TransactionRequest } from "ethers";
 import {OpenAuthConfig, BaseProps, TransactionDto, TransactionsOperationDto, SignMessageDto} from "../types";
-import { SIGN_MESSAGE_ENDPOINT, SIGN_TRANSACTION_ENDPOINT } from "../constants";
 
 export class BaseSigner {
     private readonly logger: Logger;
@@ -10,18 +9,21 @@ export class BaseSigner {
     private address: string;
     private chainId: number;
 
+    private readonly BASE_URL: string;
     private readonly SIGN_MESSAGE_ENDPOINT: string;
     private readonly SIGN_TRANSACTION_ENDPOINT: string;
 
-    constructor(props: BaseProps, config?: OpenAuthConfig) {
+    constructor(props: BaseProps, config: OpenAuthConfig) {
         this.logger = new Logger();
         this.apiKeyId = props.apiKeyId;
         this.sessionKey = props.sessionKey;
         this.address = props.wallet_address;
         this.chainId = props.chainId;
 
-        this.SIGN_MESSAGE_ENDPOINT = config?.signMessageEndpoint || SIGN_MESSAGE_ENDPOINT;
-        this.SIGN_TRANSACTION_ENDPOINT = config?.signTransactionEndpoint || SIGN_TRANSACTION_ENDPOINT;
+        this.BASE_URL = config.baseUrl;
+        this.SIGN_MESSAGE_ENDPOINT = `${this.BASE_URL}/sign-message`;
+        this.SIGN_TRANSACTION_ENDPOINT = `${this.BASE_URL}/sign-transaction`;
+
     }
 
     async getChainId(): Promise<number> {

@@ -1,6 +1,6 @@
 {
-  "name": "@aarc-dev/ethers-v6-signer",
-  "version": "0.0.10",
+  "name": "@aarc-xyz/ethers-v6-signer",
+  "version": "0.0.1",
   "main": "dist/index.js",
   "scripts": {
     "lint": "eslint \"{src,tests}/**/*.ts\" --fix",
