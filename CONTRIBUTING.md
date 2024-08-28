@@ -7,8 +7,8 @@ We're thrilled that you're interested in contributing to the OpenAuth Monorepo! 
 1. Fork the repository on GitHub.
 2. Clone your fork locally:
    ```sh
-   git clone https://github.com/your-username/openauth-monorepo.git
-   cd openauth-monorepo
+   git clone https://github.com/aarc-xyz/open-auth-monorepo.git
+   cd open-auth-monorepo
    ```
 3. Set up the development environment by following the instructions in the [README.md](README.md) file.
 
