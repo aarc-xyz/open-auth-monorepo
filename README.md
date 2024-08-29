@@ -69,6 +69,8 @@ OpenAuth leverages the Lit Protocol to generate Programmable Key Pairs (PKPs) vi
 
 - Node.js (>=14.x)
 - pnpm (>=6.x)
+- Running [Backend Server](https://github.com/aarc-xyz/service-open-auth-backend)
+- Running [Redirect Application](https://github.com/aarc-xyz/open-auth-redirect)
 
 ### Auth Widget
 
@@ -100,13 +102,24 @@ const config: AuthConfig = {
   },
   authMethods: ['email', 'wallet'],
   socialAuth: ['google'],
-  aarcApiKey: "YOUR_AARC_API_KEY", // Get this from dashboard.aarc.xyz
   urls: {
-    stytchUrls: { /* ... */ },
-    pollUrls: { /* ... */ },
-    publicToken: { /* ... */ },
-    redirectUrl: { /* ... */ },
-  },
+      stytchUrls: {
+        prod: "YOUR_STYTCH_PROD_URL", // Get this from stytch dashboard
+        staging: "https://test.stytch.com/",
+      },
+      pollUrls: {
+        prod: "YOUR_BACKEND_PROD_URL", // Replace with your backend URL
+        staging: "YOUR_BACKEND_STAGING_URL", // Replace with your backend URL
+      },
+      publicToken: {
+        prod: "YOUR_STYTCH_PROD_PUBLIC_TOKEN", // Get this from stytch dashboard
+        staging: "YOUR_STYTCH_STAGING_PUBLIC_TOKEN", // Get this from stytch dashboard
+      },
+      redirectUrl: {
+        prod: "RUNNING_APP_URL",  // Replace with your redirect app URL 
+        staging: "RUNNING_APP_URL", 
+      },
+    },
   chainId: 11155111, // Replace with your chainId
 };
 ```
@@ -159,7 +172,6 @@ const config = {
     textColor: 'white'
   },
   walletAddress: '0x...',
-  apiKey: 'your_aarc_api_key',
   profileURL: "https://...",
 }
 ```
@@ -214,7 +226,6 @@ const rpc_url = 'your rpc url here';
 const sessionKey = localStorage.getItem('sessionKey');
 
 const signer = new AarcEthersSigner(rpc_url, {
-  apiKeyId: process.env.AARC_API_KEY,
   wallet_address: '<authenticated address>',
   sessionKey: sessionKey,
   chainId: 1
