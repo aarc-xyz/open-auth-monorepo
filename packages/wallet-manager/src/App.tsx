@@ -13,7 +13,6 @@ function App() {
       textColor: 'white'
     },
     walletAddress: '0x7C1a357e76E0D118bB9E2aCB3Ec4789922f3e050',
-    apiKey: '294ffbcf-6a16-4e8a-8b5c-9aca09188f36',
     profileURL: "https://lh3.googleusercontent.com/a/ACg8ocJgvyoM8H1Ff-fk3OJSd0PRkfFx9vYwXkOkE_VGk_L5wefi4PYo=s96-c",
   }
 

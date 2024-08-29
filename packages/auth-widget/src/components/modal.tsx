@@ -30,7 +30,7 @@ const options = [
 
 export default function AuthModal({ config }: { config: AarcAuthWidgetConfig }) {
     const env = config.env
-    const auth = new AuthSDK(config.aarcApiKey, config.chainId, env, config.urls)
+    const auth = new AuthSDK(config?.clientId || "", config.chainId, env, config.urls)
     const { authMethods } = config
     const { isAuthWidgetOpen, openAuthWidget } = useAuthWidget();
     const [form] = Form.useForm();
@@ -155,16 +155,11 @@ export default function AuthModal({ config }: { config: AarcAuthWidgetConfig }) 
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'x-api-key': config.aarcApiKey
                 },
                 body: JSON.stringify(payload)
             });
 
-            await axios.get(`${base_url}poll-session/farcaster/${sessionIdentifier}`, {
-                headers: {
-                    'x-api-key': config.aarcApiKey
-                }
-            }).then((res: any) => {
+            await axios.get(`${base_url}poll-session/farcaster/${sessionIdentifier}`).then((res: any) => {
                 const data = res.data
                 if (data.code === 200) {
                     setStep('home')

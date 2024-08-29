@@ -41,12 +41,11 @@ ${issuedAt}
 interface MainProps {
     setWalletDetails: (details: any) => void;
     walletDetails: any;
-    aarc_api_key: string;
     base_url: string;
 }
 
 
-export default function Main({ setWalletDetails, walletDetails, aarc_api_key, base_url }: MainProps) {
+export default function Main({ setWalletDetails, walletDetails, base_url }: MainProps) {
     const [provider, setProvider] = useState<any>(null);
     const [account, setAccount] = useState<string | null>(null);
     const [signature, setSignature] = useState<string>("");
@@ -73,7 +72,6 @@ export default function Main({ setWalletDetails, walletDetails, aarc_api_key, ba
             const response = await fetch(`${base_url}external-wallet`, {
                 method: 'POST',
                 headers: {
-                    'x-api-key': aarc_api_key,
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(data)

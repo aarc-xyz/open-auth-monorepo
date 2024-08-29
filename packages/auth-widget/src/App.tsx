@@ -38,7 +38,7 @@ function App() {
     },
     authMethods: [AuthMethod.WALLET, AuthMethod.SMS, AuthMethod.EMAIL],
     socialAuth: [OAuthProvider.TELEGRAM, OAuthProvider.FARCASTER, OAuthProvider.TWITTER, OAuthProvider.GOOGLE,],
-    aarcApiKey: 'aarc_api_key',
+    clientId: 'aarc_client_id',
     chainId: 11155111,
     urls: {
       stytchUrls: {
@@ -83,7 +83,6 @@ function Auth({ data, config }: { data: any, config: any }) {
         value: 2
       },
       80001,
-      config.aarcApiKey
     )
 
   }

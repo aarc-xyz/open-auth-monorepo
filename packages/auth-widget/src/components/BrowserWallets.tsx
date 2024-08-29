@@ -34,7 +34,6 @@ const BrowserWallets: React.FC<BrowserWalletProps> = ({
             <p className="text-[16px] top-[22px]">Wallets</p>
             <div className={`w-full mt-[34px] ${config.appearance.darkMode ? "wallet-div" : "wallet-div-light"}`}>
                 {Wallet && <Wallet
-                    aarc_api_key={config.aarcApiKey}
                     base_url={base_url}
                     walletDetails={{
                         onSuccess: (account: string) => {

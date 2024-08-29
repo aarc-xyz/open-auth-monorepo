@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <div>
-        <Main walletDetails={walletDetails} setWalletDetails={setWalletDetails} aarc_api_key='aarc_api_key' base_url='staging/prod-base-url' />
+        <Main walletDetails={walletDetails} setWalletDetails={setWalletDetails} base_url='staging/prod-base-url' />
       </div>
     </>
   )
