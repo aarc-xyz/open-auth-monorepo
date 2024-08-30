@@ -39,12 +39,8 @@ function App() {
       darkMode: false,
     },
     authMethods: [AuthMethod.WALLET, AuthMethod.SMS, AuthMethod.EMAIL],
-    socialAuth: [
-      OAuthProvider.TELEGRAM,
-      OAuthProvider.FARCASTER,
-      OAuthProvider.TWITTER,
-      OAuthProvider.GOOGLE,
-    ],
+    socialAuth: [OAuthProvider.TELEGRAM, OAuthProvider.FARCASTER, OAuthProvider.TWITTER, OAuthProvider.GOOGLE,],
+    clientId: 'aarc_client_id',
     chainId: 11155111,
     aarcApiKey: "294ffbcf-6a16-4e8a-8b5c-9aca09188f36",
     urls: {
@@ -88,9 +84,8 @@ function Auth({ data, config }: { data: any; config: any }) {
         value: 2,
       },
       80001,
-      config.aarcApiKey
-    );
-  };
+    )
+  }
   return (
     <div>
       <p>{JSON.stringify(data)}</p>

@@ -34,7 +34,7 @@ export default function AddToken({ tokensState, setTokens, config, step, setStep
     }, [])
 
     const getChains = async () => {
-        getSupportedChains(config.apiKey).then((data: any) => {
+        getSupportedChains().then((data: any) => {
             setSupportedChains(data.data || [])
         }).catch(() => {
             setSupportedChains([])

@@ -21,7 +21,7 @@ export function useWallet(config: AarcAuthWidgetConfig) {
         return window.ethereum?.providers?.find((p: any) => !!p[identifier]) ?? window.ethereum;
     };
 
-    async function sendTransaction(tx: Transaction, chainId: number, aarcApiKey: string) {
+    async function sendTransaction(tx: Transaction, chainId: number) {
         const provider = localStorage.getItem('provider');
         const sessionKey = localStorage.getItem('sessionKey');
         const sessionIdentifier = localStorage.getItem('session_identifier');
@@ -84,10 +84,6 @@ export function useWallet(config: AarcAuthWidgetConfig) {
             transaction: transactionWithoutFrom,
             sessionKey,
             chainId
-        }, {
-            headers: {
-                "x-api-key": aarcApiKey
-            }
         });
     }
 

@@ -36,7 +36,7 @@ export default function WalletManagerModal({ config }: any) {
             parsedTokens = JSON.parse(tokens)
         }
 
-        getMultiChainBalances(config.apiKey, walletAddress).then((data: any) => {
+        getMultiChainBalances(walletAddress).then((data: any) => {
 
             setTotalBalance(getTotalBalance(data.data))
 
@@ -251,7 +251,7 @@ function ActivityTab({ config }: { config: any }) {
     const [loading, setLoading] = useState(false)
     useEffect(() => {
         setLoading(true)
-        getTransactions(config.apiKey, config.walletAddress).then((data) => {
+        getTransactions(config.walletAddress).then((data) => {
             setTransactions(data.data)
             setLoading(false)
         }

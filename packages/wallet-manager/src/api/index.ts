@@ -3,11 +3,10 @@
 import { BRIDGE_SWAP_BASE_URL,  } from "../constants";
 import axios from "axios";
 import {BASE_URL_OPEN_AUTH} from "../constants";
-export const getMultiChainBalances = async (apiKey:string, walletAddress:string) => {
+export const getMultiChainBalances = async (walletAddress:string) => {
     const response = await fetch(`${BRIDGE_SWAP_BASE_URL}/balances/${walletAddress}`, {
         method: "GET",
         headers: {
-            "x-api-key": apiKey,
             Accept: "application/json",
             "Content-Type": "application/json",
         },
@@ -17,12 +16,11 @@ export const getMultiChainBalances = async (apiKey:string, walletAddress:string)
 };
 
 
-export const getSupportedTokens = async (apiKey:string, chainId : number) => {
+export const getSupportedTokens = async (chainId : number) => {
     const endPoint = `${BRIDGE_SWAP_BASE_URL}/supported-tokens?chainId=${chainId}&isShortList=${true}`;
     const response = await fetch(endPoint, {
         method: "GET",
         headers: {
-            "x-api-key": apiKey,
             Accept: "application/json",
             "Content-Type": "application/json",
         } as HeadersInit,
@@ -31,7 +29,7 @@ export const getSupportedTokens = async (apiKey:string, chainId : number) => {
     return json;
 }
 
-export function sendTransaction (apiKey:string, tx: any, chainId: number, sessionKey: string, session_identifier: string) {
+export function sendTransaction (tx: any, chainId: number, sessionKey: string, session_identifier: string) {
     tx.value = tx.value * 10**18
   return  axios.post(`${BASE_URL_OPEN_AUTH}/send-transaction`,
             {
@@ -40,33 +38,26 @@ export function sendTransaction (apiKey:string, tx: any, chainId: number, sessio
                 "transaction": tx,
                 "sessionKey": sessionKey,
                 "chainId": chainId
-            },
-            {
-                headers: {
-                    "x-api-key": apiKey,
-                }
             }
         )
 }
 
 
-export const getTransactions = async (apiKey:string, walletAddress:string) => {
+export const getTransactions = async (walletAddress:string) => {
     const response = await fetch(`${BASE_URL_OPEN_AUTH}/get-pkp-txns/${walletAddress}`, {
         method: "GET",
         headers: {
-            "x-api-key": apiKey
         },
     });
     const json = await response.json();
     return json;
 }
 
-export const getSupportedChains = async (apiKey:string) => {
+export const getSupportedChains = async () => {
     const endPoint = `${BRIDGE_SWAP_BASE_URL}/supported-chains`;
     const response = await fetch(endPoint, {
         method: "GET",
         headers: {
-            "x-api-key": apiKey,
             Accept: "application/json",
             "Content-Type": "application/json",
         } as HeadersInit,

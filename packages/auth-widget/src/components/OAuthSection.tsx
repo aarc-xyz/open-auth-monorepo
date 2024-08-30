@@ -34,7 +34,7 @@ const OAuthSection = ({ config, setStep, setProvider, setLoadingMessage, setSess
     const base_url = config.urls.pollUrls[config.env]
     const [farcasterCalled, setFarcasterCalled] = useState(false)
     const cookies = new Cookies();
-    const auth = new AuthSDK(config.aarcApiKey, config.chainId, env, config.urls)
+    const auth = new AuthSDK(config.clientId || "", config.chainId, env, config.urls)
 
     const handleLogin = async (provider: OauthProviderKey) => {
         setProvider(provider)
@@ -120,17 +120,9 @@ const OAuthSection = ({ config, setStep, setProvider, setLoadingMessage, setSess
                 domain: window.origin.split('//')[1],
                 signature: data.signature,
             }
-        }, {
-            headers: {
-                "x-api-key": config.aarcApiKey
-            }
         }).then(async () => {
 
-            await axios.get(`${base_url}poll-session/farcaster/${session_identifier}`, {
-                headers: {
-                    'x-api-key': config.aarcApiKey
-                }
-            }).then((res) => {
+            await axios.get(`${base_url}poll-session/farcaster/${session_identifier}`).then((res) => {
                 const data = res.data
                 if (data.code === 200) {
                     setStep('passkey')

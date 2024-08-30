@@ -63,7 +63,6 @@ const rpc_url = 'your rpc url here';
 const sessionKey = localStorage.getItem('sessionKey');
 
 const signer = new AarcEthersSigner(rpc_url, {
-  apiKeyId: process.env.AARC_API_KEY,
   wallet_address: '<authenticated address>',
   sessionKey: sessionKey,
   chainId: 1
@@ -74,7 +73,6 @@ const signer = new AarcEthersSigner(rpc_url, {
 
 - `rpc_url`: RPC endpoint for the corresponding chain ID.
 - `AarcBaseProps`:
-  - `apiKeyId`: Your API key for the Open Auth services.
   - `wallet_address`: The authenticated address of the user's wallet (returned on successful authentication using OpenAuth Widget).
   - `sessionKey`: A unique identifier for the user's session (stored in local browser storage after successful authentication).
   - `chainId`: ID of the Ethereum network you want to interact with (e.g., 1 for mainnet).
@@ -149,7 +147,6 @@ import { ethers } from "ethers";
 
 const customProvider = new ethers.JsonRpcProvider(rpc_url);
 const signer = new AarcEthersSigner(customProvider, {
-  apiKeyId: process.env.AARC_API_KEY,
   wallet_address: '<authenticated address>',
   sessionKey: sessionKey,
   chainId: 1
@@ -173,7 +170,7 @@ try {
 
 If you encounter issues:
 
-1. Ensure you're using the correct `apiKeyId` and `wallet_address`.
+1. Ensure you're using the correct `wallet_address`.
 2. Verify that the `sessionKey` is valid and not expired.
 3. Check that you're connected to the correct network (chainId).
 4. For RPC-related issues, try using a different RPC endpoint.

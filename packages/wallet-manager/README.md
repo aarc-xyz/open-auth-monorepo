@@ -71,7 +71,6 @@ const config = {
     textColor: 'white'
   },
   walletAddress: '0x...', // User's wallet address
-  apiKey: 'your_aarc_api_key', // Get this from Aarc dashboard
   profileURL: "https://...", // URL for user profile, if applicable
 }
 ```

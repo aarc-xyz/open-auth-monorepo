@@ -128,7 +128,7 @@ export default function SendTransaction({ availbleChains, tokensData, step, setS
             value: values.amount.toHex()
         }
 
-        sendTransaction(config.apiKey, tx, selectedChain, sessionKey, session_identifier).then((data) => {
+        sendTransaction(tx, selectedChain, sessionKey, session_identifier).then((data) => {
             console.log(data, "data")
             setStep('success')
         }).catch(err => {

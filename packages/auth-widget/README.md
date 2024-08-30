@@ -88,7 +88,6 @@ const config: AuthConfig = {
   },
   authMethods: ['email', 'wallet'],
   socialAuth: ['google'],
-  aarcApiKey: "YOUR_AARC_API_KEY" // Get this from dashboard.aarc.xyz,
   urls: {
       stytchUrls: {
         prod: "YOUR_STYTCH_PROD_URL", // Get this from stytch dashboard
@@ -103,7 +102,6 @@ const config: AuthConfig = {
         staging: "YOUR_STYTCH_STAGING_PUBLIC_TOKEN", // Get this from stytch dashboard
       },
       redirectUrl: {
-        // replace it with your running app url, it won't work with localhost so you can use tunneling services like ngrok. 
         prod: "RUNNING_APP_URL",  // Replace with your redirect app URL 
         staging: "RUNNING_APP_URL", 
       },
@@ -176,7 +174,6 @@ sendTransaction(
     value: '0x29a2241af62c0000' // value in hex
   }, 
   11155111, // Replace with your chainId
-  "YOUR_AARC_API_KEY"
 );
 ```
 

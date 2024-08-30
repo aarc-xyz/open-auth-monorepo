@@ -8,19 +8,19 @@ interface StytchConfig {
 }
 
 class AuthSDK {
-    private aarcApiKey: string;
+    private clientId: string;
     private chainId: number;
     private env: string;
     private config: StytchConfig;
 
-    constructor(aarcApiKey: string, chainId: number, env: string, config : StytchConfig) {
+    constructor(clientId: string, chainId: number, env: string, config : StytchConfig) {
         if (env !== "prod" && env !== "staging") {
             throw new Error("Invalid environment provided. Please use 'prod' or 'staging'.");
         }
 
         this.config = config;
 
-        this.aarcApiKey = aarcApiKey;
+        this.clientId = clientId;
         this.chainId = chainId;
         this.env = env;
     }
@@ -33,12 +33,11 @@ class AuthSDK {
                 session_identifier,
                 env: this.env,
                 chainId: this.chainId,
-                aarcApiKey: this.aarcApiKey,
                 requestSource: window.origin
             });
 
             const pollUrl = this.config.pollUrls[this.env];
-            const callBackUrlResponse = await axios.get(`${pollUrl}callback-url/${provider}`, { headers: { 'x-api-key': this.aarcApiKey } })
+            const callBackUrlResponse = await axios.get(`${pollUrl}callback-url/${provider}`, { headers: { 'client-id': this.clientId } })
 
             if (callBackUrlResponse.data.data.hasNativeAuth) {
                 return `${callBackUrlResponse.data.data.callbackUrl}&state=state`
@@ -74,7 +73,6 @@ class AuthSDK {
                 `${pollUrl}poll-session/${provider}/${session_identifier}`,
                 {
                     headers: {
-                        "x-api-key": this.aarcApiKey,
                         "Request-Source": window.origin,
                     },
                 }
@@ -115,7 +113,6 @@ class AuthSDK {
         const response = await axios.get(`${base_url}passcode/${mode}/${data}`, {
             headers: {
                 'Content-Type': 'application/json',
-                'x-api-key': this.aarcApiKey
             }
         });
 
@@ -142,7 +139,6 @@ class AuthSDK {
             },
             {
                 headers: {
-                    "x-api-key": this.aarcApiKey,
                     "Request-Source": window.origin,
                 },
             }
@@ -152,12 +148,7 @@ class AuthSDK {
         if(authenticateResponse.status === 200) {
 
     const pollResponse = await axios.get(
-        `${base_url}poll-session/${provider}/${session_identifier}`,
-        {
-            headers: {
-                "x-api-key": this.aarcApiKey,
-            },
-        }
+        `${base_url}poll-session/${provider}/${session_identifier}`
     );
 
     const responseData = pollResponse.data.data;
@@ -194,7 +185,6 @@ class AuthSDK {
         const response = await fetch(`${base_url}external-wallet`, {
             method: 'POST',
             headers: {
-                'x-api-key': this.aarcApiKey,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(data)
@@ -227,18 +217,13 @@ class AuthSDK {
             }
         }, {
             headers: {
-                    "x-api-key": this.aarcApiKey,
                     "Request-Source": window.origin
             }
         }).catch(err => {
             return { status: 'error', message: 'Error during authentication', error: err };
         })
 
-        const pollResponse:any = await axios.get(`${base_url}poll-session/farcaster/${session_identifier}`, {
-            headers: {
-                'x-api-key': this.aarcApiKey
-            }
-        }).catch(err => {
+        const pollResponse:any = await axios.get(`${base_url}poll-session/farcaster/${session_identifier}`).catch(err => {
             return { status: 'error', message: 'Error during authentication', error: err };
         });
 
@@ -260,16 +245,11 @@ class AuthSDK {
             session_identifier,
             env: this.env,
             chainId: this.chainId,
-            aarcApiKey: this.aarcApiKey,
             requestSource: window.origin
         });
         const encodedState = encodeURIComponent(state);
         const auth_portal_url = this.config.pollUrls[this.env];
-        const res = await axios.get(`${auth_portal_url}x-token?state=${encodedState}`, {
-            headers: {
-                "x-api-key": this.aarcApiKey,
-            }
-        });
+        const res = await axios.get(`${auth_portal_url}x-token?state=${encodedState}`);
         const twitter_base = "https://api.twitter.com/oauth/authenticate?oauth_token="
         const url = `${twitter_base}${res.data.data}&state=${encodedState}`
         return url

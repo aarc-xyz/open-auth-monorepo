@@ -30,7 +30,6 @@ const PasskeyComponent = ({ config, sessionIdentifier, newWalletAddress, userDat
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    'x-api-key': config.aarcApiKey,
                 }
             });
             const body = await res.json();
@@ -51,7 +50,6 @@ const PasskeyComponent = ({ config, sessionIdentifier, newWalletAddress, userDat
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'x-api-key': config.aarcApiKey,
                 },
                 body: JSON.stringify(payload)
             })

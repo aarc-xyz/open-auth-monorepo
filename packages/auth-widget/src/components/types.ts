@@ -30,7 +30,7 @@ export type AarcAuthWidgetConfig = {
     };
     authMethods: AuthMethod[];
     socialAuth: OAuthProvider[];
-    aarcApiKey: string;
+    clientId?: string;
     chainId: number;
     urls: any;
     env: 'production' | 'staging'
