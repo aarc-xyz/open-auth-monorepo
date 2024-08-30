@@ -1,0 +1,30 @@
+{
+  "name": "@aarc-xyz/ethers-v6-signer",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "scripts": {
+    "lint": "eslint \"{src,tests}/**/*.ts\" --fix",
+    "build": "rimraf dist && tsc",
+    "test": "",
+    "test:cov": "",
+    "pub": "npm run build && npm publish --access public"
+  },
+  "author": "Aarc",
+  "license": "MIT",
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^20.12.11",
+    "nodemon": "^3.1.0",
+    "rimraf": "^5.0.5",
+    "ts-jest": "^29.1.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "ethers": "^6.12.1"
+  },
+  "files": [
+    "dist/*",
+    "README.md"
+  ]
+}
