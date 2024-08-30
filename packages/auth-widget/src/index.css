@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+.ant-switch-checked {
+  background: black !important;
+}
+
+.antd-switch {
+  background: black;
+}
+
+
+@media (prefers-color-scheme: dark) {
+
+
+  a:hover {
+    color: #747bff;
+  }
+
+  .filter-white {
+    filter: invert(87%) sepia(99%) saturate(4%) hue-rotate(14deg) brightness(111%) contrast(100%);
+  }
+
+  .wallet-div {
+    button {
+      background-color: black !important;
+    }
+  }
+}
+
+wcm-modal {
+  z-index: 100000;
+}
+
+.fc-authkit-signin-button span {
+  display: none;
+}
+
+.fc-authkit-signin-button {
+  width: 100%;
+}
+
+.fc-authkit-profile-button {
+  width: 100% !important;
+}
+
+.fc-authkit-profile-button button {
+  width: 100%;
+}
