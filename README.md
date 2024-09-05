@@ -259,3 +259,7 @@ For more detailed information on each package, please refer to their individual 
 - [Wallet Auth README](packages/wallet-auth/README.md)
 - [Wallet Manager README](packages/wallet-manager/README.md)
 - [Signer SDK Ethers V6 README](packages/signer-sdk-ethers-v6/README.md)
+
+## License
+
+This project is licensed under the Apache License, Version 2.0. See the [LICENSE](LICENSE) file for more details.
